@@ -5,7 +5,8 @@
     },
     "variables": {
         "atlas_username": "{{env `ATLAS_USERNAME`}}",
-        "atlas_name": "{{env `ATLAS_NAME`}}"
+        "atlas_name": "{{env `ATLAS_NAME`}}",
+        "build_name": "{{env `ATLAS_BUILD_NAME`}}"
     },
     "provisioners": [
         {
@@ -93,7 +94,7 @@
         {
             "type": "atlas",
             "only": ["vmware-iso"],
-            "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
+            "artifact": "{{user `atlas_username`}}/{{user `build_name`}}",
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
@@ -103,7 +104,7 @@
         {
             "type": "atlas",
             "only": ["virtualbox-iso"],
-            "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
+            "artifact": "{{user `atlas_username`}}/{{user `build_name`}}",
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
